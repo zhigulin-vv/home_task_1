@@ -3,6 +3,8 @@ package com.company;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -13,9 +15,8 @@ public class Main {
         //Готовимся к логированию
         Logger logger = LoggerFactory.getLogger(Main.class);
 
-
-
-        System.out.println(initRange(args[0]));
+        //Опрос пользователся и вывод результата
+        System.out.println(initRange(request_user()));
 
 
         //Создаем запись в журнале
@@ -23,10 +24,24 @@ public class Main {
 
     }
 
+    public static String request_user()
+    {
+
+        //запрос у пользователя количества чисел для составления ряда
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите число:");
+        String a = sc.next();
+        sc.close();
+
+        return a;
+
+    }
+
     public static String getElapsedTime(long launched_at)
     {
 
-        //Рассчитываем время, затраченное на рассчтеы
+        //Рассчитываем время, затраченное на вычисления
         StringBuilder time_elapsed = new StringBuilder();
         time_elapsed.append("Затраченное время: ");
         time_elapsed.append(System.currentTimeMillis() - launched_at);
@@ -38,6 +53,8 @@ public class Main {
 
     public static boolean initBefore(String settings)
     {
+
+        //Проверяем возможность получения числа из строки
 
         try
         {
@@ -53,6 +70,9 @@ public class Main {
 
     public static String initRange(String income)
     {
+
+        // Сообщаем пользователю резульат рассчета
+        // или уведоляем о невозможности выполнения таквого
 
         StringBuilder Fibs = new StringBuilder();
 
@@ -76,6 +96,8 @@ public class Main {
 
     public static String getFibs(int it)
     {
+
+        // Рассчет ряда
 
         StringBuilder Fibs = new StringBuilder();
 
